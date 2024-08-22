@@ -21,12 +21,12 @@ export const pusherServer = new PusherServer({
   useTLS: true,
 });
 
-// export const pusherClient = new PusherClient(
-//   process.env.NEXT_PUBLIC_PUSHER_APP_KEY as string,
-//   {
-//     cluster: process.env.NEXT_PUBLIC_PUSHER_APP_CLUSTOR as string,
-//   }
-// );
+export const pusherClient = new PusherClient(
+  process.env.NEXT_PUBLIC_PUSHER_APP_KEY as string,
+  {
+    cluster: process.env.NEXT_PUBLIC_PUSHER_APP_CLUSTOR as string,
+  }
+);
 
 export const postToParent = (message: string) => {
   window.parent.postMessage(message, "*");
