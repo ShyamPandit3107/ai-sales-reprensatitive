@@ -1,22 +1,28 @@
-"use client";
-import { useChangePassword } from "@/hooks/settings/use-settings";
-import React from "react";
-import Section from "../section-label";
-import FormGenerator from "../forms/form-generator";
-import { Button } from "../ui/button";
-import { Loader } from "../loader";
+'use client'
+import { useChangePassword } from '@/hooks/settings/use-settings'
+import React from 'react'
+import Section from '../section-label'
+import FormGenerator from '../forms/form-generator'
+import { Button } from '../ui/button'
+import { Loader } from '../loader'
 
-type Props = {};
+type Props = {}
 
 const ChangePassword = (props: Props) => {
-  const { register, errors, onChangePassword, loading } = useChangePassword();
+  const { register, errors, onChangePassword, loading } = useChangePassword()
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 mb-10">
+    <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
       <div className="lg:col-span-1">
-        <Section label="Change Password" message="Reset your password" />
+        <Section
+          label="Change Password"
+          message="Reset your password"
+        />
       </div>
-      <form onSubmit={onChangePassword} className="lg:col-span-4">
+      <form
+        onSubmit={onChangePassword}
+        className="lg:col-span-4"
+      >
         <div className="lg:w-[500px] flex flex-col gap-3">
           <FormGenerator
             register={register}
@@ -40,7 +46,7 @@ const ChangePassword = (props: Props) => {
         </div>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default ChangePassword;
+export default ChangePassword

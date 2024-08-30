@@ -1,17 +1,17 @@
 import {
   onDomainCustomerResponses,
   onGetAllDomainBookings,
-} from "@/actions/appointment";
-import PortalForm from "@/components/forms/portal/portal-form";
-import React from "react";
+} from '@/actions/appointment'
+import PortalForm from '@/components/forms/portal/portal-form'
+import React from 'react'
 
-type Props = { params: { domainid: string; customerid: string } };
+type Props = { params: { domainid: string; customerid: string } }
 
 const CustomerSignUpForm = async ({ params }: Props) => {
-  const questions = await onDomainCustomerResponses(params.customerid);
-  const bookings = await onGetAllDomainBookings(params.domainid);
+  const questions = await onDomainCustomerResponses(params.customerid)
+  const bookings = await onGetAllDomainBookings(params.domainid)
 
-  if (!questions) return null;
+  if (!questions) return null
 
   return (
     <PortalForm
@@ -22,7 +22,7 @@ const CustomerSignUpForm = async ({ params }: Props) => {
       questions={questions.questions}
       type="Appointment"
     />
-  );
-};
+  )
+}
 
-export default CustomerSignUpForm;
+export default CustomerSignUpForm

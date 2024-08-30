@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react'
 
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-import FormGenerator from "../form-generator";
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
+import FormGenerator from '../form-generator'
 
 type DomainUpdateProps = {
-  name: string;
-  register: UseFormRegister<FieldValues>;
-  errors: FieldErrors<FieldValues>;
-};
+  name: string
+  register: UseFormRegister<FieldValues>
+  errors: FieldErrors<FieldValues>
+}
 
 export const DomainUpdate = ({ name, register, errors }: DomainUpdateProps) => {
   return (
@@ -22,5 +22,5 @@ export const DomainUpdate = ({ name, register, errors }: DomainUpdateProps) => {
         placeholder={name}
       />
     </div>
-  );
-};
+  )
+}

@@ -1,9 +1,10 @@
-import { authMiddleware } from "@clerk/nextjs";
-import { match } from "assert";
+import { authMiddleware } from '@clerk/nextjs'
+
 export default authMiddleware({
-  publicRoutes: ["/", "/auth(.*)", "/portal(.*)", "/images(.*)"],
-  ignoredRoutes: ["/chatbot"],
-});
+  publicRoutes: ['/', '/auth(.*)', '/portal(.*)', '/images(.*)'],
+  ignoredRoutes: ['/chatbot'],
+})
+
 export const config = {
-  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
-};
+  matcher: ['/((?!.+.[w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
+}

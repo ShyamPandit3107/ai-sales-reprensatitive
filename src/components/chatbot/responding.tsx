@@ -1,11 +1,14 @@
-import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import React from 'react'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 
 export const Responding = () => {
   return (
     <div className="self-start flex items-end gap-3">
       <Avatar className="w-5 h-5">
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarImage
+          src="https://github.com/shadcn.png"
+          alt="@shadcn"
+        />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
       <div className="chat-bubble">
@@ -16,5 +19,5 @@ export const Responding = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

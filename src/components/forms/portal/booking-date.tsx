@@ -1,29 +1,29 @@
-import { Loader } from "@/components/loader";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import { Card, CardDescription } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { APPOINTMENT_TIME_SLOTS } from "@/constants/timeslots";
-import { cn } from "@/lib/utils";
-import React from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { Loader } from '@/components/loader'
+import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
+import { Card, CardDescription } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { APPOINTMENT_TIME_SLOTS } from '@/constants/timeslots'
+import { cn } from '@/lib/utils'
+import React from 'react'
+import { FieldValues, UseFormRegister } from 'react-hook-form'
 
 type Props = {
-  date: Date | undefined;
-  onBooking: React.Dispatch<React.SetStateAction<Date | undefined>>;
-  onBack(): void;
-  register: UseFormRegister<FieldValues>;
-  onSlot(slot: string): void;
-  currentSlot?: string;
-  loading: boolean;
+  date: Date | undefined
+  onBooking: React.Dispatch<React.SetStateAction<Date | undefined>>
+  onBack(): void
+  register: UseFormRegister<FieldValues>
+  onSlot(slot: string): void
+  currentSlot?: string
+  loading: boolean
   bookings:
     | {
-        date: Date;
-        slot: string;
+        date: Date
+        slot: string
       }[]
-    | undefined;
-};
+    | undefined
+}
 
 const BookAppointmentDate = ({
   date,
@@ -59,12 +59,15 @@ const BookAppointmentDate = ({
         </div>
         <div className="flex flex-col gap-5">
           {APPOINTMENT_TIME_SLOTS.map((slot, key) => (
-            <Label htmlFor={`slot-${key}`} key={key}>
+            <Label
+              htmlFor={`slot-${key}`}
+              key={key}
+            >
               <Card
                 onClick={() => onSlot(slot.slot)}
                 className={cn(
-                  currentSlot == slot.slot ? "bg-grandis" : "bg-peach",
-                  "px-10 py-4",
+                  currentSlot == slot.slot ? 'bg-grandis' : 'bg-peach',
+                  'px-10 py-4',
                   bookings &&
                     bookings.some(
                       (booking) =>
@@ -72,8 +75,8 @@ const BookAppointmentDate = ({
                           `${date?.getDate()}/${date?.getMonth()}` &&
                         booking.slot == slot.slot
                     )
-                    ? "bg-gray-300"
-                    : "cursor-pointer border-orange hover:bg-grandis transition duration-150 ease-in-out"
+                    ? 'bg-gray-300'
+                    : 'cursor-pointer border-orange hover:bg-grandis transition duration-150 ease-in-out'
                 )}
               >
                 <Input
@@ -91,7 +94,7 @@ const BookAppointmentDate = ({
                   className="hidden"
                   type="radio"
                   value={slot.slot}
-                  {...register("slot")}
+                  {...register('slot')}
                   id={`slot-${key}`}
                 />
                 {slot.slot}
@@ -101,7 +104,11 @@ const BookAppointmentDate = ({
         </div>
       </div>
       <div className="flex gap-5 justify-center mt-5">
-        <Button type="button" onClick={onBack} variant={"outline"}>
+        <Button
+          type="button"
+          onClick={onBack}
+          variant={'outline'}
+        >
           Edit Questions?
         </Button>
         <Button>
@@ -109,7 +116,7 @@ const BookAppointmentDate = ({
         </Button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BookAppointmentDate;
+export default BookAppointmentDate

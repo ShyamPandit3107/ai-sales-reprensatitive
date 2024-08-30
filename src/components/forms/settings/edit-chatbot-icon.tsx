@@ -1,20 +1,20 @@
-import Section from "@/components/section-label";
-import UploadButton from "@/components/upload-button";
-import { BotIcon } from "@/icons/bot-icon";
+import Section from '@/components/section-label'
+import UploadButton from '@/components/upload-button'
+import { BotIcon } from '@/icons/bot-icon'
 
-import Image from "next/image";
-import React from "react";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import Image from 'next/image'
+import React from 'react'
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
 
 type Props = {
-  register: UseFormRegister<FieldValues>;
-  errors: FieldErrors<FieldValues>;
+  register: UseFormRegister<FieldValues>
+  errors: FieldErrors<FieldValues>
   chatBot: {
-    id: string;
-    icon: string | null;
-    welcomeMessage: string | null;
-  } | null;
-};
+    id: string
+    icon: string | null
+    welcomeMessage: string | null
+  } | null
+}
 
 const EditChatbotIcon = ({ register, errors, chatBot }: Props) => {
   return (
@@ -23,7 +23,11 @@ const EditChatbotIcon = ({ register, errors, chatBot }: Props) => {
         label="Chatbot icon"
         message="Change the icon for the chatbot."
       />
-      <UploadButton label="Edit Image" register={register} errors={errors} />
+      <UploadButton
+        label="Edit Image"
+        register={register}
+        errors={errors}
+      />
       {chatBot?.icon ? (
         <div className="rounded-full overflow-hidden">
           <Image
@@ -39,7 +43,7 @@ const EditChatbotIcon = ({ register, errors, chatBot }: Props) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default EditChatbotIcon;
+export default EditChatbotIcon

@@ -1,15 +1,15 @@
-"use client";
-import Section from "@/components/section-label";
-import { useToast } from "@/components/ui/use-toast";
-import { Copy } from "lucide-react";
-import React from "react";
+'use client'
+import Section from '@/components/section-label'
+import { useToast } from '@/components/ui/use-toast'
+import { Copy } from 'lucide-react'
+import React from 'react'
 
 type Props = {
-  id: string;
-};
+  id: string
+}
 
 const CodeSnippet = ({ id }: Props) => {
-  const { toast } = useToast();
+  const { toast } = useToast()
   let snippet = `
     const iframe = document.createElement("iframe");
     
@@ -39,7 +39,7 @@ const CodeSnippet = ({ id }: Props) => {
         iframe.height = dimensions.height
         iframe.contentWindow.postMessage("${id}", "http://localhost:3000/")
     })
-        `;
+        `
 
   return (
     <div className="mt-10 flex flex-col gap-5 items-start">
@@ -51,11 +51,11 @@ const CodeSnippet = ({ id }: Props) => {
         <Copy
           className="absolute top-5 right-5 text-gray-400 cursor-pointer"
           onClick={() => {
-            navigator.clipboard.writeText(snippet);
+            navigator.clipboard.writeText(snippet)
             toast({
-              title: "Copied to clipboard",
-              description: "You can now paste the code inside your website",
-            });
+              title: 'Copied to clipboard',
+              description: 'You can now paste the code inside your website',
+            })
           }}
         />
         <pre>
@@ -63,7 +63,7 @@ const CodeSnippet = ({ id }: Props) => {
         </pre>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CodeSnippet;
+export default CodeSnippet

@@ -1,14 +1,12 @@
-// import { USER_REGISTRATION_FORM } from "@/constants/forms";
-import React from "react";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-
-import { USER_REGISTRATION_FORM } from "@/constants/forms";
-import FormGenerator from "../form-generator";
+import { USER_REGISTRATION_FORM } from '@/constants/forms'
+import React from 'react'
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
+import FormGenerator from '../form-generator'
 
 type Props = {
-  register: UseFormRegister<FieldValues>;
-  errors: FieldErrors<FieldValues>;
-};
+  register: UseFormRegister<FieldValues>
+  errors: FieldErrors<FieldValues>
+}
 
 function AccountDetailsForm({ errors, register }: Props) {
   return (
@@ -25,7 +23,7 @@ function AccountDetailsForm({ errors, register }: Props) {
         />
       ))}
     </>
-  );
+  )
 }
 
-export default AccountDetailsForm;
+export default AccountDetailsForm

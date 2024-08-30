@@ -1,25 +1,25 @@
-import { SIDE_BAR_MENU } from "@/constants/menu";
+import { SIDE_BAR_MENU } from '@/constants/menu'
 
-import React from "react";
+import React from 'react'
 
-import { LogOut, MonitorSmartphone } from "lucide-react";
-import { MenuLogo } from "@/icons/menu-logo";
-import MenuItem from "./menu-item";
-import DomainMenu from "./domain-menu";
+import { LogOut, MonitorSmartphone } from 'lucide-react'
+import { MenuLogo } from '@/icons/menu-logo'
+import MenuItem from './menu-item'
+import DomainMenu from './domain-menu'
 
 type MinMenuProps = {
-  onShrink(): void;
-  current: string;
-  onSignOut(): void;
+  onShrink(): void
+  current: string
+  onSignOut(): void
   domains:
     | {
-        id: string;
-        name: string;
-        icon: string | null;
+        id: string
+        name: string
+        icon: string | null
       }[]
     | null
-    | undefined;
-};
+    | undefined
+}
 
 export const MinMenu = ({
   onShrink,
@@ -35,9 +35,17 @@ export const MinMenu = ({
       <div className="animate-fade-in opacity-0 delay-300 fill-mode-forwards flex flex-col justify-between h-full pt-10">
         <div className="flex flex-col">
           {SIDE_BAR_MENU.map((menu, key) => (
-            <MenuItem size="min" {...menu} key={key} current={current} />
+            <MenuItem
+              size="min"
+              {...menu}
+              key={key}
+              current={current}
+            />
           ))}
-          <DomainMenu min domains={domains} />
+          <DomainMenu
+            min
+            domains={domains}
+          />
         </div>
         <div className="flex flex-col">
           <MenuItem
@@ -54,5 +62,5 @@ export const MinMenu = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

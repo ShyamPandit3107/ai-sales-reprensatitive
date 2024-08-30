@@ -1,19 +1,19 @@
-import React from "react";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
-import FormGenerator from "../form-generator";
-import { Button } from "@/components/ui/button";
-import { Loader } from "@/components/loader";
+import React from 'react'
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
+import FormGenerator from '../form-generator'
+import { Button } from '@/components/ui/button'
+import { Loader } from '@/components/loader'
 
 type Props = {
   questions: {
-    id: string;
-    question: string;
-    answered: string | null;
-  }[];
-  register: UseFormRegister<FieldValues>;
-  error: FieldErrors<FieldValues>;
-  onNext(): void;
-};
+    id: string
+    question: string
+    answered: string | null
+  }[]
+  register: UseFormRegister<FieldValues>
+  error: FieldErrors<FieldValues>
+  onNext(): void
+}
 
 const QuestionsForm = ({ questions, register, error, onNext }: Props) => {
   return (
@@ -23,7 +23,7 @@ const QuestionsForm = ({ questions, register, error, onNext }: Props) => {
       </div>
       {questions.map((question) => (
         <FormGenerator
-          defaultValue={question.answered || ""}
+          defaultValue={question.answered || ''}
           key={question.id}
           name={`question-${question.id}`}
           errors={error}
@@ -31,15 +31,19 @@ const QuestionsForm = ({ questions, register, error, onNext }: Props) => {
           label={question.question}
           type="text"
           inputType="input"
-          placeholder={question.answered || "Not answered"}
+          placeholder={question.answered || 'Not answered'}
         />
       ))}
 
-      <Button className="" type="button" onClick={onNext}>
+      <Button
+        className=""
+        type="button"
+        onClick={onNext}
+      >
         Next
       </Button>
     </div>
-  );
-};
+  )
+}
 
-export default QuestionsForm;
+export default QuestionsForm

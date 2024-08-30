@@ -1,7 +1,7 @@
-import Image from "next/image";
-import * as React from "react";
-import { Button } from "../ui/button";
-import Link from "next/link";
+import Image from 'next/image'
+import * as React from 'react'
+import { Button } from '../ui/button'
+import Link from 'next/link'
 
 function NavBar() {
   return (
@@ -12,8 +12,8 @@ function NavBar() {
           alt="LOGO"
           sizes="100vw"
           style={{
-            width: "100px",
-            height: "auto",
+            width: '100px',
+            height: 'auto',
           }}
           width={0}
           height={0}
@@ -33,7 +33,7 @@ function NavBar() {
         Free Trial
       </Link>
     </div>
-  );
+  )
 }
 
-export default NavBar;
+export default NavBar
