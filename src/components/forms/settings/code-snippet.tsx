@@ -21,7 +21,7 @@ const CodeSnippet = ({ id }: Props) => {
     
     iframeStyles('
         .chat-frame {
-            position: fixed;
+            position: fixed; 
             bottom: 50px;
             right: 50px;
             border: none;
