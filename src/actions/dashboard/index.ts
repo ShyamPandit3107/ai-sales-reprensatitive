@@ -1,17 +1,17 @@
-'use server'
+"use server";
 
-import { client } from '@/lib/prisma'
-import { currentUser } from '@clerk/nextjs'
-import Stripe from 'stripe'
+import { client } from "@/lib/prisma";
+import { currentUser } from "@clerk/nextjs";
+import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET!, {
   typescript: true,
-  apiVersion: '2024-04-10',
-})
+  apiVersion: "2024-04-10",
+});
 
 export const getUserClients = async () => {
   try {
-    const user = await currentUser()
+    const user = await currentUser();
     if (user) {
       const clients = await client.customer.count({
         where: {
@@ -21,19 +21,19 @@ export const getUserClients = async () => {
             },
           },
         },
-      })
+      });
       if (clients) {
-        return clients
+        return clients;
       }
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const getUserBalance = async () => {
   try {
-    const user = await currentUser()
+    const user = await currentUser();
     if (user) {
       const connectedStripe = await client.user.findUnique({
         where: {
@@ -42,30 +42,30 @@ export const getUserBalance = async () => {
         select: {
           stripeId: true,
         },
-      })
+      });
 
       if (connectedStripe) {
         const transactions = await stripe.balance.retrieve({
           stripeAccount: connectedStripe.stripeId!,
-        })
+        });
 
         if (transactions) {
           const sales = transactions.pending.reduce((total, next) => {
-            return total + next.amount
-          }, 0)
+            return total + next.amount;
+          }, 0);
 
-          return sales / 100
+          return sales / 100;
         }
       }
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const getUserPlanInfo = async () => {
   try {
-    const user = await currentUser()
+    const user = await currentUser();
     if (user) {
       const plan = await client.user.findUnique({
         where: {
@@ -84,23 +84,23 @@ export const getUserPlanInfo = async () => {
             },
           },
         },
-      })
+      });
       if (plan) {
         return {
           plan: plan.subscription?.plan,
           credits: plan.subscription?.credits,
           domains: plan._count.domains,
-        }
+        };
       }
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const getUserTotalProductPrices = async () => {
   try {
-    const user = await currentUser()
+    const user = await currentUser();
     if (user) {
       const products = await client.product.findMany({
         where: {
@@ -113,24 +113,24 @@ export const getUserTotalProductPrices = async () => {
         select: {
           price: true,
         },
-      })
+      });
 
       if (products) {
         const total = products.reduce((total, next) => {
-          return total + next.price
-        }, 0)
+          return total + next.price;
+        }, 0);
 
-        return total
+        return total;
       }
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const getUserTransactions = async () => {
   try {
-    const user = await currentUser()
+    const user = await currentUser();
     if (user) {
       const connectedStripe = await client.user.findUnique({
         where: {
@@ -139,18 +139,18 @@ export const getUserTransactions = async () => {
         select: {
           stripeId: true,
         },
-      })
+      });
 
       if (connectedStripe) {
         const transactions = await stripe.charges.list({
           stripeAccount: connectedStripe.stripeId!,
-        })
+        });
         if (transactions) {
-          return transactions
+          return transactions;
         }
       }
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
